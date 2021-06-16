@@ -7,7 +7,7 @@ const router = require('express-promise-router')();//dung cai nay thi khong can 
 
 const UserController = require('../controllers/user');
 
-const {validateBody, validateParam,schemas}=require('../helpers/routerHelper');
+const { validateBody, validateParam, schemas } = require('../helpers/routerHelper');
 
 router.route('/')
     .get(UserController.index)
@@ -15,14 +15,13 @@ router.route('/')
 // .put()
 // .delete()
 router.route('/:userID')
-    .get(validateParam(schemas.idSchema,'userID'), UserController.getUser)
+    .get(validateParam(schemas.idSchema, 'userID'), UserController.getUser)
     .put(UserController.replaceUser)
     .patch(UserController.updateUser)
 
 router.route('/:userID/decks')
     .get(UserController.getUserDecks)
     .post(UserController.newUserDeck)
-
 
 
 module.exports = router;

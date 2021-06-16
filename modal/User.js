@@ -1,23 +1,29 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const Schema =mongoose.Schema;
+const Schema = mongoose.Schema;
 
-const UserSchema=new Schema({
-    firstName:{
-        type:String
+const UserSchema = new Schema({
+    firstName: {
+        type: String
     },
-    lastName:{
-        type:String
+    lastName: {
+        type: String
     },
-    email:{
-        type:String
+    email: {
+        type: String,
+       
     },
-    decks:[{
-        type:Schema.Types.ObjectId,
-        ref:'Deck'
+    password: {
+        type: String,
+     
+    },
+
+    decks: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Deck'
     }]
 })
 
-const User=mongoose.model('User',UserSchema)
+const User = mongoose.model('User', UserSchema)
 
-module.exports= User;
+module.exports = User;

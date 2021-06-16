@@ -7,10 +7,10 @@
 
 const User = require('../modal/User');
 const Deck = require('../modal/Deck')
-const Joi=require('@hapi/joi');
-const idSchema=Joi.object().keys({
-    userID:Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
-})
+// const Joi=require('@hapi/joi');
+// const idSchema=Joi.object().keys({
+//     userID:Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+// })
 const getUser = async (req, res, next) => {
     const { userID } = req.value.params;
     const user = await User.findById(userID);
@@ -80,33 +80,23 @@ const index = async (req, res, next) => {
 //     })
 // }
 
-// const newUser=(req,res,next)=>{
-//     console.log('req.body content',req.body);
-//     //create object model
-
-//     const newUser=new User(req.body);
-//     console.log('newUser',newUser);
-//     //luu trong db
-//     newUser.save().then(user=>{
-//         return res.status(201).json({
-//             user
-//         })
-//     }).catch(err=>{
-//         next(err);
-//     })
-// }
-
-const newUser = async (req, res, next) => {
-    try {
-        const newUser = new User(req.value.body)
-        await newUser.save();
-        return res.status(201).json({
-            user: newUser
-        })
-    } catch (error) {
-        next(error)
-    }
+const newUser = async (_req , res )=>{
+    // console.log('req.body content',req.body);
+    //create object model
+    const users = await User.find({})
+    return res.status(200).json({ users });
+    // const newUser = new User(req.body);
+    // console.log('newUser',newUser);
+    // //luu trong db
+    // newUser.save().then(user=>{
+    //     return res.status(201).json({
+    //         user
+    //     })
+    // }).catch(err=>{
+    //     next(err);
+    // })
 }
+
 
 
 const newUserDeck = async (req, res, next) => {

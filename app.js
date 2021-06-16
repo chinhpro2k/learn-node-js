@@ -4,7 +4,7 @@ const logger = require('morgan');
 
 const app = express();
 const userRoute = require('./routes/user');
-
+const uersRoute = require('./routes/users');
 //body parser
 
 const bodyParser = require('body-parser');
@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 
 //setup connect mongoosedb by mongoose
 
-mongoose.connect('mongodb://localhost/nodejsapistarter', {
+mongoose.connect('mongodb://localhost:27017/nodejsapistarter', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 
 //Routes
 app.use('/users', userRoute)
-
+app.use('/members', uersRoute);
 //Routes
 
 app.get('/', (req, res, next) => {
