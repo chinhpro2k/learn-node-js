@@ -32,19 +32,39 @@ router.post('/login', async (req, res) => {
         const password = req.body.password;
         const user = await User.findOne({ email: email });
         if (!user) {
-            res.send("khong tim thay email !");
+            // res.send("khong tim thay email !");
+            return res.status(404).json({
+                message: "sai tai khoan.",
+            })
         } else {
             if (password == user.password) {
                 res.send({
                     user
                 });
             }else {
-                res.send("Sai mat khau")
+                // res.send("Sai mat khau");
+                return res.status(404).json({
+                    message: "sai mat khaug.",
+                })
             }
         }
     } catch (error) {
 
     }
 });
+
+//change password
+router.put('/change/:userID',async(req,res)=>{
+    try {
+        const{userID}=req.params;
+        const newUser=req.body;
+        const result=await User.findByIdAndUpdate(userID,newUser);
+        return res.status(201).json({
+            success: true
+        })
+    } catch (error) {
+        
+    }
+})
 
 module.exports = router;
