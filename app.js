@@ -1,7 +1,7 @@
 const express = require('express');
 
 const logger = require('morgan');
-
+const cors = require('cors')
 const app = express();
 const userRoute = require('./routes/user');
 const uersRoute = require('./routes/users');
@@ -25,6 +25,9 @@ mongoose.connect('mongodb://localhost:27017/nodejsapistarter', {
     })
 
 //Middlewares(chay truoc khi ta xu ly)
+
+app.use(cors());
+ 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
