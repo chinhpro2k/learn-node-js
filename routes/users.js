@@ -34,7 +34,7 @@ router.post('/login', async (req, res) => {
         if (!user) {
             // res.send("khong tim thay email !");
             return res.status(404).json({
-                message: "sai tai khoan.",
+                message: "sai tài khoản.",
             })
         } else {
             if (password == user.password) {
@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
             }else {
                 // res.send("Sai mat khau");
                 return res.status(404).json({
-                    message: "sai mat khaug.",
+                    message: "Sai mật khẩu.",
                 })
             }
         }
@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
 router.put('/change/:userID',async(req,res)=>{
     try {
         const{userID}=req.params;
-        const newUser=req.body;
+        const newUser=req.body
         const result=await User.findByIdAndUpdate(userID,newUser);
         return res.status(201).json({
             success: true
