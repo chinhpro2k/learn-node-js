@@ -5,6 +5,8 @@ const cors = require('cors')
 const app = express();
 const userRoute = require('./routes/user');
 const uersRoute = require('./routes/users');
+const adminRoute = require('./routes/admin');
+const question = require('./routes/question')
 //body parser
 
 const bodyParser = require('body-parser');
@@ -34,6 +36,8 @@ app.use(bodyParser.json());
 //Routes
 app.use('/users', userRoute)
 app.use('/members', uersRoute);
+app.use('/admin', adminRoute)
+app.use('/question',question)
 //Routes
 
 app.get('/', (req, res, next) => {
