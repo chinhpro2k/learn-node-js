@@ -6,7 +6,8 @@ const app = express();
 const userRoute = require('./routes/user');
 const uersRoute = require('./routes/users');
 const adminRoute = require('./routes/admin');
-const question = require('./routes/question')
+const question = require('./routes/question');
+const plan=require('./routes/plan');
 //body parser
 
 const bodyParser = require('body-parser');
@@ -38,6 +39,7 @@ app.use('/users', userRoute)
 app.use('/members', uersRoute);
 app.use('/admin', adminRoute)
 app.use('/question',question)
+app.use('/plan',plan)
 //Routes
 
 app.get('/', (req, res, next) => {
