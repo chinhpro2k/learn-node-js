@@ -10,4 +10,6 @@ router.route('/')
 router.route('/create')
 .post(PlanController.createPlan)
 
+router.route('/:planID')
+.get(PlanController.getOnePlan)
 module.exports = router;

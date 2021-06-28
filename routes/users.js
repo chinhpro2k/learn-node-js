@@ -69,6 +69,19 @@ router.put('/change/:userID',async(req,res)=>{
 })
 
 //forgot password
-
+router.post('/forgot',async(req,res)=>{
+    const email=req.body.email;
+    const user = await User.findOne({ email: email });
+    if(!user){
+        return res.status(404).json({
+            message: "không tìm thấy email.",
+        })
+    }else{
+        return res.status(200).json({
+            message: "Tìm thấy email.",
+            idUser:user._id
+        })
+    }
+})
 
 module.exports = router;

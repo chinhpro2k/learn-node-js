@@ -20,7 +20,18 @@ const UserSchema = new Schema({
     type:{
         type:String,
     },
-
+    age:{
+        type:Number
+    },
+    birthday:{
+        type:String
+    },
+    phoneNumber:{
+        type:String
+    },
+    idPlan:{
+        type:String
+    },
     decks: [{
         type: Schema.Types.ObjectId,
         ref: 'Deck'

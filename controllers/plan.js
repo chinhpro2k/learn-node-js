@@ -5,6 +5,16 @@ const getPlan=async(req,res)=>{
     const plan=await Plan.find({})
     return res.status(200).json({ plan })
 }
+//get one plan
+const getOnePlan=async(req,res)=>{
+    const{planID}=req.params;
+    const plan=await Plan.findById(planID)
+    const planValue={
+        planName:plan.planName,
+        content:plan.content
+    }
+    return res.status(200).json({planValue})
+}
 //create
 const createPlan=async(req,res)=>{
     const newPlan={
@@ -27,5 +37,6 @@ const createPlan=async(req,res)=>{
 
 module.exports={
     createPlan,
-    getPlan
+    getPlan,
+    getOnePlan
 }

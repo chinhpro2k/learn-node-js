@@ -12,7 +12,12 @@ const PlanSchema = new Schema({
     point: {
         type: Number,
        
-    }
+    },
+    budget:{
+        type:Number
+    },
+    bill:[],
+    transaction:[]
 })
 
 const Plan = mongoose.model('Plan', PlanSchema)
